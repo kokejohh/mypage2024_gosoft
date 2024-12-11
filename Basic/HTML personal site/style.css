@@ -1,4 +1,21 @@
-table, th, td {
-    border: 2px solid black;
+table {
     border-collapse: collapse;
+    border: 2px solid red;
+    letter-spacing: 2px;
+}
+
+caption {
+    caption-side: bottom;
+}
+
+th, td {
+    border: 1px solid blue;
+}
+
+td:last-of-type {
+    text-align: center;
+}
+
+tbody > tr:nth-last-of-type(even) {
+    background-color: brown;
 }
