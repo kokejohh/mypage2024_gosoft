@@ -1,12 +1,9 @@
-table {
+/*table {
     border-collapse: collapse;
     border: 2px solid red;
     letter-spacing: 2px;
 }
 
-caption {
-    caption-side: bottom;
-}
 
 th, td {
     border: 1px solid blue;
@@ -18,4 +15,14 @@ td:last-of-type {
 
 tbody > tr:nth-last-of-type(even) {
     background-color: brown;
+}*/
+
+img {
+    border-radius: 50%;
+    width: 250px;
+    aspect-ratio: 1/1;
+}
+
+caption {
+    caption-side: bottom;
 }
