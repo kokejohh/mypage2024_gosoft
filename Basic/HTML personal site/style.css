@@ -26,3 +26,7 @@ img {
 caption {
     caption-side: bottom;
 }
+
+hr {
+    border-style: dotted;
+}
