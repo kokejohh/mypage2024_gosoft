@@ -19,7 +19,8 @@ tbody > tr:nth-last-of-type(even) {
 
 img {
     border-radius: 50%;
-    width: 250px;
+    object-fit: cover;
+    width: 500px;
     aspect-ratio: 1/1;
 }
 
