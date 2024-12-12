@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบข้อสอบอย่างง่าย Simple Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div>
+        <div class="quiz-container">
+            <p id="question">PIM ย่อมาจากอะไร ?</p>
+            <button class="button" value="correct">A) พีไอเอ็ม</button>
+            <button class="button" >B) ปิ๋ม</button>
+            <button class="button" >C) พิม</button>
+            <button class="button" >D) ภีม</button>
+        </div>
+        <div class="quiz-container">
+            <p id="question">Is a cat an animal?</p>
+            <button class="button" >A) No, cat is kitcat</button>
+            <button class="button" value="correct" onclick="checkAnswer('c')">B) Yes, cat is cat</button>
+            <button class="button" >C) I don't know</button>
+            <button class="button" >D) Apple</button>
+            <p id="result"></p>
+            <h1 id="point">0</h1>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
