@@ -1,11 +1,13 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const axios = require('axios');
 
 const app = express();
 //app.use(cors({ origin: 'http://localhost:5500'}));
 //app.use(cors());
 // app.use(express.json());
+app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
@@ -44,6 +46,28 @@ app.post('/bmi', (req, res) => {
                     (bmi < 25) ? 'over normal' :
                     (bmi < 30) ? 'fat': 'too fat';
      res.send("คุณมีค่า BMI = " + bmi + " , คุณอยู่ในเกณฑ์ = " + criteria);
+});
+
+app.get('/kanye', async (req, res) => {
+    try {
+    const response = await axios.get('https://api.kanye.rest/');
+    console.log(response.data);
+
+    const responseTest= await axios(
+        {
+            method: 'get',
+            url: 'https://api.kanye.rest/'
+        }
+    )
+    console.log(responseTest.data);
+    const response2 = await fetch('https://api.kanye.rest/');
+    console.log(await response2.json());
+
+    res.json(response.data);
+    } catch (error) {
+        res.status(404).json({message: 'Not founded'});
+    }
+
 });
 
 app.listen(3000, () => {
