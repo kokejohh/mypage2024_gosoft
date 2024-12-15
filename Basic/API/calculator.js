@@ -1,6 +1,5 @@
 const express = require('express');
-const QueryString = require('qs');
-const { queryObjects } = require('v8');
+const path = require('path');
 
 const app = express();
 
@@ -8,13 +7,25 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.send('Hello World');
+    res.sendFile('/index.html', { root: path.join(__dirname)});
 });
 
 app.post('/', (req, res) => {
     console.log(req.body);
-    const { num1, num2 } = req.body;
-    const result = Number(num1) + Number(num2);
+    const { num1, num2, submit} = req.body;
+
+    console.log(submit);
+    let result;
+    switch(submit) {
+        case 'plus':
+            result = Number(num1) + Number(num2);
+            break;
+        case 'minus':
+            result = Number(num1) - Number(num2);
+            break;
+        default:
+            result = 'Not Calculate';
+    }
     res.send(`answer is ${result}`);
 });
 
