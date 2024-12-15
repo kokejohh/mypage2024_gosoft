@@ -38,7 +38,7 @@ app.get('/bmi', (req, res) => {
 app.post('/bmi', (req, res) => {
     const { weight, height} = req.body;
 
-    const bmi = weight / Math.pow(height / 100, 2);
+    const bmi = Math.round(weight / height**2); 
     const criteria = (bmi <= 18.5) ? 'too thin' :
                     (bmi < 23) ? 'normal' :
                     (bmi < 25) ? 'over normal' :
