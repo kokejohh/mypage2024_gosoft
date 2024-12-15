@@ -31,6 +31,21 @@ app.post('/', (req, res) => {
     res.send(`answer is ${result}`);
 });
 
+app.get('/bmi', (req, res) => {
+    res.sendFile('bmiCalculator.html', { root: path.join(__dirname) });
+});
+
+app.post('/bmi', (req, res) => {
+    const { weight, height} = req.body;
+
+    const bmi = weight / Math.pow(height / 100, 2);
+    const criteria = (bmi <= 18.5) ? 'too thin' :
+                    (bmi < 23) ? 'normal' :
+                    (bmi < 25) ? 'over normal' :
+                    (bmi < 30) ? 'fat': 'too fat';
+     res.send("คุณมีค่า BMI = " + bmi + " , คุณอยู่ในเกณฑ์ = " + criteria);
+});
+
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 
