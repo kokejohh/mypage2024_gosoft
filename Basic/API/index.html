@@ -8,11 +8,25 @@
 </head>
 <body>
 <h1>Calculator</h1>
-   <form action="/" method="post">
+   <form action="http://localhost:3000" method="post">
        <input type="text" name="num1" placeholder="First Number">
        <input type="password" name="num2" placeholder="Second Number">
        <button type = "submit" name="submit" value="plus">+</button>
        <button type = "submit" name="submit" value="minus">-</button>
+       <!-- <button type = "button" id="love" name="submit" value="minus">submit</button> -->
    </form>
+   
+   <!-- <script type="text/javascript">
+        let love = document.querySelector('#love');
+        love.addEventListener('click', () => {
+            fetch('http://localhost:3000', {
+                method: 'post'
+            })
+            .then(response => response.text())
+            .then(data => console.log(data));
+
+        })
+   </script> -->
+
 </body>
 </html>
