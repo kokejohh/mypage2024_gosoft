@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const axios = require('axios');
+const http = require('http');
 
 const app = express();
 //app.use(cors({ origin: 'http://localhost:5500'}));
@@ -60,6 +61,28 @@ app.get('/kanye', async (req, res) => {
         }
     )
     console.log(responseTest.data);
+
+    const reqHttp = http.request({
+        hostname: 'localhost',
+        port: '3000',
+        path: '/weather',
+        method: 'get',
+        headers: {
+            'content-type': 'application/json'
+        }
+    }, res2 => {
+        let output = '';
+        console.log(res.statusCode);
+        res2.on('data', chunk => {
+            output += chunk;
+        });
+        res2.on('end', () => {
+            let obj = JSON.parse(output);
+            // res.json(obj);
+        });
+    })
+    reqHttp.end();
+
     const response2 = await fetch('https://api.kanye.rest/');
     console.log(await response2.json());
 
@@ -68,6 +91,13 @@ app.get('/kanye', async (req, res) => {
         res.status(404).json({message: 'Not founded'});
     }
 
+});
+
+app.get('/weather', async (req, res) => {
+    const response = await axios.post('https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=1e9337b3055fef44005cc4d61842ed62&units=metric');
+    const { data } = response;
+
+    res.json(data);
 });
 
 app.listen(3000, () => {
