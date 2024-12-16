@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const path = require('path');
 const app = express();
+
 
 // Middleware - บอกวิธีการที่ client ส่งข้อมูลผ่าน middleware
 app.use(bodyParser.urlencoded({extended:false})) // ส่งผ่าน Form
@@ -52,6 +54,11 @@ app.delete('/students/:id', async (req,res)=>{
     "email":"oak@email.com"
 }
 */
+
+app.get('/', (req, res) => {
+    res.sendFile('student.html', { root: path.join(__dirname) });
+});
+
 app.post("/students", async (req, res) => {
     // ส่งข้อมูลผ่าน body-parser (Middleware)
     const name = req.body.name;
